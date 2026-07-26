@@ -104,13 +104,14 @@ if (careCarousel && careTrack && careCards.length) {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const carePosition = (index) => {
+    const safeIndex = Math.max(0, Math.min(index, careCards.length - 1));
+    const card = careCards[safeIndex];
     if (window.matchMedia('(max-width: 47.9375rem)').matches) {
-      const card = careCards[index];
       return Math.max(0, card.offsetLeft - ((careTrack.clientWidth - card.offsetWidth) / 2));
     }
 
     const trackInset = Number.parseFloat(window.getComputedStyle(careTrack).paddingLeft) || 0;
-    return Math.max(0, careCards[index].offsetLeft - trackInset);
+    return Math.max(0, card.offsetLeft - trackInset);
   };
 
   const setActiveCare = (index) => {
