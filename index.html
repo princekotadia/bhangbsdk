@@ -6,6 +6,10 @@
     <meta name="theme-color" content="#18100d" />
     <meta name="description" content="Riddhi Ayurveda Clinic — return to balance." />
     <link rel="preload" as="image" href="./assets/images/hero.jpg" fetchpriority="high" />
+    <link rel="preload" as="image" href="./assets/images/philosophy-leaves.jpg" />
+    <link rel="preload" as="image" href="./assets/images/treatments-background.jpg" />
+    <link rel="preload" as="image" href="./assets/images/journey-ganesha.jpg" />
+    <link rel="preload" as="image" href="./assets/images/contact-canopy.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600;1,700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet" />
@@ -14,16 +18,31 @@
   </head>
   <body>
     <main>
+      <div class="fixed-bg-container" aria-hidden="true">
+        <div class="fixed-bg-slide is-active" data-bg-section="top">
+          <img src="./assets/images/hero.jpg" alt="" class="bg-img hero-bg" fetchpriority="high" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="philosophy">
+          <img src="./assets/images/philosophy-leaves.jpg" alt="" class="bg-img philosophy-bg" loading="eager" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="treatments">
+          <img src="./assets/images/treatments-background.jpg" alt="" class="bg-img treatments-bg" loading="eager" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="journey">
+          <img src="./assets/images/journey-ganesha.jpg" alt="" class="bg-img journey-bg" loading="eager" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="doctors">
+          <img src="./assets/images/philosophy-leaves.jpg" alt="" class="bg-img philosophy-bg" loading="eager" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="stories">
+          <img src="./assets/images/treatments-background.jpg" alt="" class="bg-img treatments-bg" loading="eager" />
+        </div>
+        <div class="fixed-bg-slide" data-bg-section="contact">
+          <img src="./assets/images/contact-canopy.jpg" alt="" class="bg-img contact-bg" loading="eager" />
+        </div>
+      </div>
+
       <section id="top" class="hero" aria-labelledby="hero-title">
-        <img
-          class="hero__image"
-          src="./assets/images/hero.jpg"
-          alt="Rolled towels and candlelight in a warm, quiet treatment room"
-          width="1365"
-          height="2048"
-          fetchpriority="high"
-        />
-        <div class="hero__wash" aria-hidden="true"></div>
 
         <header class="site-header">
           <div class="brand-lockup">
@@ -56,15 +75,6 @@
       </section>
 
       <section id="philosophy" class="philosophy-section" aria-labelledby="philosophy-title">
-        <img
-          class="philosophy__image"
-          src="./assets/images/philosophy-leaves.jpg"
-          alt=""
-          width="1365"
-          height="2048"
-          aria-hidden="true"
-        />
-        <div class="philosophy__wash" aria-hidden="true"></div>
         <div class="philosophy-inner">
           <div class="philosophy-heading-group">
             <h2 id="philosophy-title" class="philosophy-title">Before we treat,<br />we listen.</h2>
@@ -205,37 +215,38 @@
         </div>
 
         <div class="doctors-spread">
-          <div class="doctor-photo doctor-photo--minakshee">
-            <img src="./assets/images/dr-minakshee.jpg" alt="Dr. Minakshee Vijay Telang seated in her clinic" loading="lazy" />
-          </div>
-
-          <article class="doctor-description doctor-description--minakshee" aria-labelledby="minakshee-name">
-            <h3 id="minakshee-name" class="doctor-name">Dr. Minakshee Vijay Telang</h3>
-            <p class="doctor-role">Consultant</p>
-            <p class="doctor-credentials">MD Ayurveda | PhD Scholar<br />MA Sanskrit Vyakarana | Jyotish Pravin</p>
-            <p class="doctor-bio">Specialised in Panchakarma, Nadi Pariksha and Yoga-based therapies, with an approach rooted in careful assessment and deeply personalised care.</p>
-            <div class="doctor-availability">
-              <p class="doctor-availability__label">Availability</p>
-              <p>Monday, Wednesday &amp; Friday<br />6:30 PM&ndash;9:30 PM</p>
+          <article class="doctor-card" aria-labelledby="minakshee-name">
+            <div class="doctor-photo doctor-photo--minakshee">
+              <img src="./assets/images/dr-minakshee.jpg" alt="Dr. Minakshee Vijay Telang seated in her clinic" loading="lazy" />
+            </div>
+            <div class="doctor-description doctor-description--minakshee">
+              <h3 id="minakshee-name" class="doctor-name">Dr. Minakshee Vijay Telang</h3>
+              <p class="doctor-role">Consultant</p>
+              <p class="doctor-credentials">MD Ayurveda | PhD Scholar<br />MA Sanskrit Vyakarana | Jyotish Pravin</p>
+              <p class="doctor-bio">Specialised in Panchakarma, Nadi Pariksha and Yoga-based therapies, with an approach rooted in careful assessment and deeply personalised care.</p>
+              <div class="doctor-availability">
+                <p class="doctor-availability__label">Availability</p>
+                <p>Monday, Wednesday &amp; Friday<br />6:30 PM&ndash;9:30 PM</p>
+              </div>
             </div>
           </article>
 
-          <div class="doctor-photo doctor-photo--vijay">
-            <img src="./assets/images/dr-vijay.jpg" alt="Dr. Vijay Telang with a young patient" loading="lazy" />
-          </div>
-
-          <article class="doctor-description doctor-description--vijay" aria-labelledby="vijay-name">
-            <h3 id="vijay-name" class="doctor-name">Dr. Vijay Telang</h3>
-            <p class="doctor-role">Chief Consultant &amp; Director</p>
-            <p class="doctor-credentials">BAMS | MD Ayurveda</p>
-            <p class="doctor-bio">An Ayurvedic physician with more than five years of Cardiac ICU experience and a special interest in preventive cardiac wellness and long-term health.</p>
-            <div class="doctor-availability">
-              <p class="doctor-availability__label">Availability</p>
-              <p>Tuesday &amp; Thursday<br />6:30 PM&ndash;9:30 PM</p>
-              <p>2nd &amp; 4th Sunday<br />10:00 AM&ndash;1:00 PM</p>
+          <article class="doctor-card" aria-labelledby="vijay-name">
+            <div class="doctor-photo doctor-photo--vijay">
+              <img src="./assets/images/dr-vijay.jpg" alt="Dr. Vijay Telang with a young patient" loading="lazy" />
+            </div>
+            <div class="doctor-description doctor-description--vijay">
+              <h3 id="vijay-name" class="doctor-name">Dr. Vijay Telang</h3>
+              <p class="doctor-role">Chief Consultant &amp; Director</p>
+              <p class="doctor-credentials">BAMS | MD Ayurveda</p>
+              <p class="doctor-bio">An Ayurvedic physician with more than five years of Cardiac ICU experience and a special interest in preventive cardiac wellness and long-term health.</p>
+              <div class="doctor-availability">
+                <p class="doctor-availability__label">Availability</p>
+                <p>Tuesday &amp; Thursday<br />6:30 PM&ndash;9:30 PM</p>
+                <p>2nd &amp; 4th Sunday<br />10:00 AM&ndash;1:00 PM</p>
+              </div>
             </div>
           </article>
-
         </div>
         <div class="doctors-back-top">
           <a class="section-back-top section-back-top--ink" href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>

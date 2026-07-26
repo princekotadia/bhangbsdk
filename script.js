@@ -245,3 +245,65 @@ if (careCarousel && careTrack && careCards.length) {
   }, { passive: true });
   setActiveCare(0);
 }
+
+// Cinematic Background Scroll Crossfade Observer
+const bgSlides = document.querySelectorAll('.fixed-bg-slide');
+const trackedSections = document.querySelectorAll('section[id]');
+
+if (bgSlides.length && trackedSections.length && 'IntersectionObserver' in window) {
+  const sectionToSlideMap = new Map();
+  bgSlides.forEach((slide) => {
+    const sectionId = slide.getAttribute('data-bg-section');
+    if (sectionId) sectionToSlideMap.set(sectionId, slide);
+  });
+
+  const bgObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        const targetSlide = sectionToSlideMap.get(id);
+        if (targetSlide) {
+          bgSlides.forEach((slide) => slide.classList.remove('is-active'));
+          targetSlide.classList.add('is-active');
+        }
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-25% 0px -25% 0px',
+    threshold: 0
+  });
+
+  trackedSections.forEach((section) => bgObserver.observe(section));
+}
+
+// Subtle Cinematic Parallax Movement (5–10%)
+const parallaxImages = document.querySelectorAll('.fixed-bg-slide .bg-img');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (parallaxImages.length && !prefersReducedMotion) {
+  let isTicking = false;
+
+  const updateParallax = () => {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const pageHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+    const scrollRatio = scrollY / pageHeight;
+    // Shift image position subtly between -3.5% and +3.5%
+    const translateY = (scrollRatio - 0.5) * 7;
+
+    parallaxImages.forEach((img) => {
+      img.style.transform = `translate3d(0, ${translateY}%, 0)`;
+    });
+
+    isTicking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(updateParallax);
+      isTicking = true;
+    }
+  }, { passive: true });
+
+  updateParallax();
+}
