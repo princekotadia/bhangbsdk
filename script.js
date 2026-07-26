@@ -246,35 +246,59 @@ if (careCarousel && careTrack && careCards.length) {
   setActiveCare(0);
 }
 
-// Cinematic Background Scroll Crossfade Observer
+// Dominant Viewport Section Background Switcher
 const bgSlides = document.querySelectorAll('.fixed-bg-slide');
-const trackedSections = document.querySelectorAll('section[id]');
+const trackedSections = [...document.querySelectorAll('section[id]')];
 
-if (bgSlides.length && trackedSections.length && 'IntersectionObserver' in window) {
+if (bgSlides.length && trackedSections.length) {
   const sectionToSlideMap = new Map();
   bgSlides.forEach((slide) => {
     const sectionId = slide.getAttribute('data-bg-section');
     if (sectionId) sectionToSlideMap.set(sectionId, slide);
   });
 
-  const bgObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        const targetSlide = sectionToSlideMap.get(id);
-        if (targetSlide) {
-          bgSlides.forEach((slide) => slide.classList.remove('is-active'));
-          targetSlide.classList.add('is-active');
-        }
+  let currentActiveSectionId = null;
+
+  const updateDominantBackground = () => {
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    let maxVisibleHeight = -1;
+    let dominantSectionId = null;
+
+    trackedSections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const visibleTop = Math.max(0, rect.top);
+      const visibleBottom = Math.min(viewportHeight, rect.bottom);
+      const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+
+      if (visibleHeight > maxVisibleHeight) {
+        maxVisibleHeight = visibleHeight;
+        dominantSectionId = section.getAttribute('id');
       }
     });
-  }, {
-    root: null,
-    rootMargin: '-25% 0px -25% 0px',
-    threshold: 0
-  });
 
-  trackedSections.forEach((section) => bgObserver.observe(section));
+    if (dominantSectionId && dominantSectionId !== currentActiveSectionId) {
+      const targetSlide = sectionToSlideMap.get(dominantSectionId);
+      if (targetSlide) {
+        currentActiveSectionId = dominantSectionId;
+        bgSlides.forEach((slide) => slide.classList.remove('is-active'));
+        targetSlide.classList.add('is-active');
+      }
+    }
+  };
+
+  let isTickingBg = false;
+  window.addEventListener('scroll', () => {
+    if (!isTickingBg) {
+      window.requestAnimationFrame(() => {
+        updateDominantBackground();
+        isTickingBg = false;
+      });
+      isTickingBg = true;
+    }
+  }, { passive: true });
+
+  window.addEventListener('resize', updateDominantBackground, { passive: true });
+  updateDominantBackground();
 }
 
 // Subtle Cinematic Parallax Movement (5–10%)
