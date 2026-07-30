@@ -312,10 +312,9 @@ html:has(body.menu-is-open) {
 .hero__content {
   position: relative;
   z-index: 2;
-  align-self: center;
-  width: min(100%, 46rem);
-  padding: clamp(5.5rem, 12vh, 7.5rem) var(--page-padding) clamp(1.5rem, 3vh, 2.5rem);
-  text-align: center;
+  align-self: flex-end;
+  width: min(100%, 44rem);
+  padding: 0 var(--page-padding) max(4rem, env(safe-area-inset-bottom));
 }
 
 .eyebrow {
@@ -333,61 +332,29 @@ h1 {
   margin: 0;
   color: var(--ivory);
   font-family: var(--serif);
-  font-size: clamp(3.8rem, 10vw, 6.4rem);
+  font-size: clamp(3.6rem, 13vw, 5.5rem);
   font-weight: 500;
   letter-spacing: -0.05em;
-  line-height: 0.95;
+  line-height: 0.94;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .hero__statement {
-  margin: clamp(1.6rem, 3vh, 2.4rem) auto 0;
-  max-width: 32rem;
+  margin: 1.75rem 0 0;
   color: var(--ivory-muted);
-  font-size: clamp(1.12rem, 2.2vw, 1.4rem);
+  font-size: clamp(1.1rem, 4.2vw, 1.35rem);
   font-weight: 400;
   letter-spacing: -0.015em;
-  line-height: 1.52;
+  line-height: 1.48;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-}
-
-.hero__philosophy {
-  max-width: 38rem;
-  margin: clamp(3.25rem, 6vh, 4.75rem) auto 0;
-  padding-top: clamp(2.25rem, 4vh, 3.25rem);
-  border-top: 1px solid rgba(255, 248, 233, 0.22);
-}
-
-.hero__philosophy-title {
-  margin: 0 0 1.1rem;
-  color: var(--gold-accent);
-  font-family: var(--serif);
-  font-size: clamp(1.65rem, 3.4vw, 2.4rem);
-  font-weight: 500;
-  font-style: italic;
-  letter-spacing: -0.025em;
-  line-height: 1.18;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
-}
-
-.hero__philosophy-text {
-  margin: 0.85rem 0 0;
-  color: var(--ivory-muted);
-  font-family: var(--sans);
-  font-size: clamp(0.98rem, 1.9vw, 1.14rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.62;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 1.2rem 1.45rem;
-  margin-top: clamp(2.25rem, 4.5vh, 3.25rem);
+  margin-top: 2.25rem;
 }
 
 .primary-action {
@@ -397,7 +364,6 @@ h1 {
   gap: 0.9rem;
   min-width: 13rem;
   min-height: 3.5rem;
-  margin-inline: auto;
   padding: 0.9rem 1.75rem;
   color: var(--ivory);
   border: 1px solid rgba(243, 201, 168, 0.45);
@@ -710,28 +676,38 @@ h1 {
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: clamp(1.6rem, 3.2vw, 3.25rem);
-    font-size: 0.68rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
+    gap: clamp(1.5rem, 3.3vw, 3.5rem);
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
   }
-  .desktop-nav a {
-    opacity: 0.82;
-    transition: opacity 200ms ease, color 200ms ease;
-  }
-  .desktop-nav a:hover,
-  .desktop-nav a:focus-visible {
-    opacity: 1;
-    color: var(--gold-accent);
-  }
   .hero__content {
-    align-self: center;
-    padding-bottom: 0;
-    margin-top: clamp(2rem, 6vh, 4rem);
+    padding-bottom: clamp(3.6rem, 7vw, 6.5rem);
   }
   h1 { font-size: clamp(4.8rem, 8.2vw, 8.5rem); }
-  .hero__statement { max-width: 28rem; font-size: clamp(1.15rem, 1.6vw, 1.45rem); }
+  .hero__statement { max-width: 22rem; font-size: clamp(1.15rem, 1.6vw, 1.45rem); }
+  .philosophy-section {
+    margin-top: -6rem;
+    padding-block: clamp(8.75rem, 13vw, 11.25rem);
+    padding-top: calc(clamp(8.75rem, 13vw, 11.25rem) + 6rem);
+  }
+
+  .philosophy-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: min(100%, 74rem);
+  }
+  .philosophy-heading-group { max-width: 42rem; }
+  .philosophy-body {
+    max-width: 36rem;
+    margin-top: clamp(2.5rem, 5vw, 3.75rem);
+    padding-top: 0;
+  }
+  .philosophy-title { font-size: clamp(3.4rem, 6.2vw, 6.25rem); }
+  .philosophy-support { font-size: clamp(1.7rem, 2.3vw, 2rem); }
+  .philosophy-closing { font-size: clamp(1.125rem, 1.4vw, 1.3rem); }
 }
 
 @media (min-width: 64rem) {
@@ -743,7 +719,7 @@ h1 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(1.25rem, 2.5vw, 2.25rem) 0 clamp(3.5rem, 7vw, 5.5rem);
+  padding: clamp(3.5rem, 7vw, 5.5rem) 0;
   color: var(--ivory);
 }
 
@@ -829,17 +805,17 @@ h1 {
   flex-direction: column;
   height: clamp(16.5rem, 30vw, 20.5rem);
   overflow: hidden;
-  border: 1px solid rgba(255, 248, 233, 0.14);
-  border-radius: 1.25rem;
+  border: 1px solid rgb(255 248 233 / 0.22);
+  border-radius: 1.35rem;
   background: #140e0a;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms ease;
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 0.28);
+  transition: transform 320ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 320ms cubic-bezier(0.4, 0, 0.2, 1), border-color 320ms ease;
 }
 
 .care-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(243, 201, 168, 0.35);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
+  transform: translateY(-5px);
+  border-color: rgb(255 248 233 / 0.45);
+  box-shadow: 0 1.5rem 3.25rem rgb(0 0 0 / 0.42);
 }
 
 .care-card__media {
@@ -907,9 +883,9 @@ h1 {
 
 @media (min-width: 48rem) {
   .care-section {
-    margin-top: 0;
-    padding-top: clamp(1.75rem, 3.5vw, 3rem);
-    padding-bottom: clamp(5rem, 8vw, 7.5rem);
+    margin-top: -6rem;
+    padding-block: clamp(7rem, 11vw, 10rem);
+    padding-top: calc(clamp(7rem, 11vw, 10rem) + 6rem);
   }
 
   .care-section__header,
@@ -943,272 +919,91 @@ h1 {
   padding: 0 9vw;
 }
 
-/* --- OUR JOURNEY TIMELINE SECTION --- */
 .journey-section {
   position: relative;
   isolation: isolate;
   display: flex;
-  flex-direction: column;
   overflow: hidden;
-  padding: clamp(4rem, 8vw, 6.5rem) var(--page-padding);
+  padding: clamp(3.5rem, 7vw, 5.5rem) var(--page-padding);
   color: var(--ivory);
   background: transparent;
 }
 
-.journey-bg-pattern {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: radial-gradient(circle at 20% 30%, #769a8b 1px, transparent 1px),
-                    radial-gradient(circle at 80% 70%, #2e5d50 1.5px, transparent 1px);
-  background-size: 48px 48px;
+.journey-section::before,
+.journey-section::after {
+  display: none;
 }
 
 .journey-inner {
   position: relative;
   z-index: 1;
-  width: min(100%, 72rem);
+  width: min(100%, 76rem);
   margin: 0 auto;
 }
 
-.journey-header {
-  max-width: 44rem;
-  margin: 0 auto clamp(3rem, 7vw, 5rem);
-  text-align: center;
+.journey-content {
+  max-width: 36rem;
 }
 
 .journey-title {
   margin: 0;
   color: var(--ivory);
   font-family: var(--serif);
-  font-size: clamp(3rem, 7vw, 5.25rem);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 0.95;
+  font-size: clamp(3.1rem, 13vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: -0.06em;
+  line-height: 0.94;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85);
 }
 
-.journey-subtitle {
-  max-width: 34ch;
-  margin: 1.25rem auto 0;
+.journey-title span {
+  display: block;
+  margin-top: 0.16em;
   color: var(--gold-accent);
-  font-family: var(--serif);
-  font-size: clamp(1.2rem, 2.8vw, 1.65rem);
+  font-size: 0.78em;
   font-style: italic;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.35;
+  letter-spacing: -0.055em;
   text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
 }
 
-/* Timeline Container */
-.timeline-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(2.5rem, 5vw, 4rem);
-  padding-block: 1rem;
-}
-
-/* Vertical Line */
-.timeline-line {
-  position: absolute;
-  top: 1rem;
-  bottom: 1rem;
-  left: 1.6rem;
-  width: 2px;
-  background: rgba(255, 248, 233, 0.12);
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-.timeline-line__progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: linear-gradient(to bottom, #2e5d50, var(--gold-accent));
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(46, 93, 80, 0.8);
-  transition: height 120ms ease-out;
-}
-
-/* Timeline Item (Mobile stack) */
-.timeline-item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-left: 4.2rem;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 650ms cubic-bezier(0.215, 0.61, 0.355, 1), transform 650ms cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-
-.timeline-item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Timeline Marker (Circle Icon) */
-.timeline-marker {
-  position: absolute;
-  top: 1.2rem;
-  left: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3.2rem;
-  height: 3.2rem;
-  color: var(--gold-accent);
-  background: #16241e;
-  border: 1px solid rgba(118, 154, 139, 0.35);
-  border-radius: 50%;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-  transform: translateX(-50%);
-  transition: color 350ms ease, background-color 350ms ease, border-color 350ms ease, box-shadow 350ms ease, transform 350ms ease;
-  z-index: 2;
-}
-
-.timeline-marker svg {
-  width: 1.35rem;
-  height: 1.35rem;
-  transition: transform 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.timeline-item.is-active .timeline-marker {
-  color: #fff;
-  background: #2e5d50;
-  border-color: var(--gold-accent);
-  box-shadow: 0 0 20px rgba(46, 93, 80, 0.7), 0 0 0 4px rgba(46, 93, 80, 0.25);
-}
-
-.timeline-item.is-active .timeline-marker svg {
-  transform: scale(1.12);
-}
-
-/* Timeline Card */
-.timeline-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.6rem, 4vw, 2.25rem);
-  background: rgba(24, 17, 12, 0.68);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 248, 233, 0.14);
-  border-radius: 1.25rem;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.28);
-  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms ease;
-}
-
-.timeline-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(243, 201, 168, 0.35);
-  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.38);
-}
-
-.timeline-number {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
-  color: rgba(255, 238, 216, 0.25);
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-.timeline-heading {
-  margin: 0;
-  padding-right: 2rem;
-  color: var(--ivory);
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 3.2vw, 1.85rem);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-  line-height: 1.15;
-}
-
-.timeline-location {
-  margin: 0.6rem 0 0;
-  color: #8ab4a4;
-  font-family: var(--sans);
-  font-size: clamp(0.82rem, 1.8vw, 0.92rem);
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.timeline-text {
-  margin: 0.9rem 0 0;
+.journey-story {
+  max-width: 32rem;
+  margin-top: clamp(1.75rem, 6vw, 2.5rem);
   color: var(--ivory-muted);
   font-family: var(--sans);
-  font-size: clamp(0.92rem, 1.9vw, 1.02rem);
+  font-size: clamp(1.04rem, 4vw, 1.22rem);
   font-weight: 400;
-  letter-spacing: -0.008em;
-  line-height: 1.62;
+  letter-spacing: -0.012em;
+  line-height: 1.65;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
 }
 
-.timeline-text + .timeline-text {
-  margin-top: 0.7rem;
-}
+.journey-story p { margin: 0; }
 
-/* Bottom CTA Block */
-.journey-cta {
+.journey-story p + p { margin-top: clamp(1.2rem, 4vw, 1.6rem); }
+
+.journey-actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 44rem;
-  margin: clamp(3.5rem, 8vw, 5.5rem) auto 0;
-  padding: clamp(2.25rem, 5vw, 3.25rem) clamp(1.5rem, 4vw, 3rem);
-  text-align: center;
-  background: linear-gradient(145deg, rgba(30, 48, 40, 0.72), rgba(18, 12, 8, 0.82));
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(118, 154, 139, 0.38);
-  border-radius: 1.6rem;
-  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.4);
+  flex-wrap: wrap;
+  margin-top: clamp(2rem, 6vw, 2.75rem);
 }
 
-.journey-cta__heading {
-  margin: 0;
-  color: var(--ivory);
-  font-family: var(--serif);
-  font-size: clamp(1.85rem, 4.5vw, 2.85rem);
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1.1;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
-}
-
-.journey-cta__text {
-  max-width: 32ch;
-  margin: 0.85rem 0 0;
-  color: var(--ivory-muted);
-  font-family: var(--sans);
-  font-size: clamp(0.96rem, 2vw, 1.1rem);
-  font-weight: 400;
-  line-height: 1.55;
-}
-
-.journey-cta__action {
+.journey-action {
   width: auto;
-  margin-top: 1.85rem;
-  padding: 0.95rem 2.2rem;
   color: var(--ivory);
   border-color: var(--gold-accent);
-  background: rgba(22, 16, 11, 0.6);
+  background: rgba(22, 16, 11, 0.55);
   backdrop-filter: blur(8px);
 }
 
-.journey-cta__action:hover,
-.journey-cta__action:focus-visible {
+.journey-action:hover,
+.journey-action:focus-visible {
   color: var(--ink);
   background: var(--gold-accent);
 }
+
+.journey-content .section-back-top { margin-top: clamp(2rem, 8vw, 2.75rem); }
 
 .doctors-section {
   position: relative;
@@ -1268,19 +1063,19 @@ h1 {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgba(255, 248, 233, 0.14);
-  border-radius: 1.25rem;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-  background: rgba(25, 17, 12, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgb(255 248 233 / 0.22);
+  border-radius: 1.35rem;
+  box-shadow: 0 1rem 2.5rem rgb(0 0 0 / 0.25);
+  background: rgb(27 19 14 / 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms ease;
 }
 
 .doctor-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 248, 233, 0.35);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.42);
+  transform: translateY(-5px);
+  border-color: rgb(255 248 233 / 0.42);
+  box-shadow: 0 1.5rem 3.25rem rgb(0 0 0 / 0.38);
 }
 
 .doctor-photo {
@@ -1471,8 +1266,7 @@ h1 {
 .contact-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   gap: 1rem;
   margin-top: clamp(2.25rem, 10vw, 3rem);
 }
@@ -1538,10 +1332,9 @@ h1 {
 .contact-map {
   overflow: hidden;
   padding: 0.16rem;
-  border: 1px solid rgba(255, 248, 233, 0.16);
-  border-radius: 1.25rem;
-  background: rgba(9, 26, 16, 0.28);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.32);
+  border: 1px solid rgb(255 247 232 / 0.32);
+  border-radius: 1.1rem;
+  background: rgb(9 26 16 / 0.28);
 }
 
 .contact-map iframe {
@@ -1549,7 +1342,7 @@ h1 {
   width: 100%;
   height: clamp(15rem, 66vw, 17.5rem);
   border: 0;
-  border-radius: 1.15rem;
+  border-radius: 0.96rem;
 }
 
 .contact-map-link {
@@ -1590,55 +1383,25 @@ h1 {
 @media (min-width: 48rem) {
   .journey-section {
     margin-top: -6rem;
-    padding: calc(clamp(7rem, 10vw, 10rem) + 6rem) var(--page-padding) clamp(7.5rem, 10vw, 10rem);
+    padding: calc(clamp(9rem, 12vw, 12rem) + 6rem) var(--page-padding) clamp(7.5rem, 10vw, 10rem);
   }
+
+  .journey-section::before,
+  .journey-section::after {
+    mask-image: linear-gradient(to bottom, transparent 0, #000 6rem, #000 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 6rem, #000 100%);
+  }
+
+  .journey-section::before { background-position: center 49%; }
 
   .journey-inner {
-    width: min(100%, 72rem);
-    margin-right: auto;
-    margin-left: auto;
+    width: min(calc(100% - (var(--page-padding) * 2)), 49rem);
+    margin-left: max(var(--page-padding), calc((100% - 76rem) / 2));
   }
 
-  .journey-title { font-size: clamp(3.8rem, 6vw, 5.5rem); }
+  .journey-title { font-size: clamp(4.1rem, 6.4vw, 6.5rem); }
 
-  .timeline-container {
-    gap: clamp(3rem, 6vw, 5rem);
-    padding-block: 2rem;
-  }
-
-  .timeline-line {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .timeline-item {
-    width: 50%;
-    padding-left: 0;
-  }
-
-  .timeline-item--left {
-    align-self: flex-start;
-    padding-right: 3.5rem;
-    text-align: left;
-  }
-
-  .timeline-item--left .timeline-marker {
-    top: 1.5rem;
-    left: 100%;
-    transform: translateX(-50%);
-  }
-
-  .timeline-item--right {
-    align-self: flex-end;
-    padding-left: 3.5rem;
-    text-align: left;
-  }
-
-  .timeline-item--right .timeline-marker {
-    top: 1.5rem;
-    left: 0;
-    transform: translateX(-50%);
-  }
+  .journey-story { margin-top: clamp(3.25rem, 5vw, 4.75rem); }
 
   .doctors-section {
     margin-top: -6rem;
@@ -1709,7 +1472,6 @@ h1 {
   .contact-actions {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     gap: 1.6rem;
   }
 

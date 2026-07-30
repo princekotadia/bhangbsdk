@@ -5,8 +5,6 @@ const menuLinks = document.querySelectorAll('.mobile-menu a');
 const mainContent = document.querySelector('main');
 let closeTimer;
 
-
-
 const setPageInert = (isInert) => {
   if (!mainContent) return;
   mainContent.inert = isInert;
@@ -332,57 +330,4 @@ if (parallaxImages.length && !prefersReducedMotion) {
   }, { passive: true });
 
   updateParallax();
-}
-
-// Timeline Scroll Reveal & Progress Fill Animation
-const timelineContainer = document.querySelector('.timeline-container');
-const timelineProgress = document.querySelector('.timeline-line__progress');
-const timelineItems = document.querySelectorAll('.timeline-item');
-
-if (timelineContainer && timelineItems.length) {
-  // Intersection Observer for revealing cards & active markers
-  const timelineObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible', 'is-active');
-      } else {
-        entry.target.classList.remove('is-active');
-      }
-    });
-  }, {
-    rootMargin: '0px 0px -15% 0px',
-    threshold: 0.25
-  });
-
-  timelineItems.forEach((item) => timelineObserver.observe(item));
-
-  // Dynamic progress line height fill on scroll
-  const updateTimelineProgress = () => {
-    if (!timelineProgress) return;
-    const rect = timelineContainer.getBoundingClientRect();
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    
-    // Calculate progress ratio relative to viewport position
-    const startOffset = windowHeight * 0.75;
-    const totalHeight = rect.height;
-    const currentProgress = startOffset - rect.top;
-    
-    let percentage = (currentProgress / totalHeight) * 100;
-    percentage = Math.max(0, Math.min(100, percentage));
-    
-    timelineProgress.style.height = `${percentage.toFixed(1)}%`;
-  };
-
-  let isTickingTimeline = false;
-  window.addEventListener('scroll', () => {
-    if (!isTickingTimeline) {
-      window.requestAnimationFrame(() => {
-        updateTimelineProgress();
-        isTickingTimeline = false;
-      });
-      isTickingTimeline = true;
-    }
-  }, { passive: true });
-
-  updateTimelineProgress();
 }
