@@ -20,6 +20,7 @@ body {
   background: transparent;
   color: var(--ivory);
   font-family: var(--sans);
+  overscroll-behavior-y: none;
 }
 
 a { color: inherit; }
