@@ -51,6 +51,7 @@ section[id] {
   height: 100vh;
   height: 100svh;
   height: 100dvh;
+  height: 100lvh;
   overflow: hidden;
   pointer-events: none;
   background-color: var(--ink);
@@ -134,6 +135,7 @@ section[id] {
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   overflow: hidden;
   background: transparent;
 }
@@ -214,6 +216,7 @@ section[id] {
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   padding: max(0.75rem, env(safe-area-inset-top)) var(--page-padding) max(2.1rem, env(safe-area-inset-bottom));
   color: var(--ivory);
   background: #0e180f;
@@ -439,7 +442,9 @@ h1 {
   flex-direction: column;
   justify-content: flex-end;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   overflow: hidden;
   padding: 0 var(--page-padding) max(18vh, env(safe-area-inset-bottom));
   color: var(--ivory);
@@ -727,7 +732,9 @@ h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   overflow: hidden;
   padding: clamp(3.5rem, 6vh, 5.5rem) 0;
   color: var(--ivory);
@@ -935,7 +942,9 @@ h1 {
   flex-direction: column;
   justify-content: flex-end;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   overflow: hidden;
   padding: 0 var(--page-padding) max(18vh, env(safe-area-inset-bottom));
   color: var(--ivory);
@@ -1025,7 +1034,9 @@ h1 {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   padding: clamp(3.5rem, 6vh, 5.5rem) 0;
   color: var(--ivory);
   background: transparent;
@@ -1234,7 +1245,9 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
+  min-height: 100lvh;
   overflow: hidden;
   padding: 40vh var(--page-padding) clamp(3.5rem, 6vh, 5.5rem);
   color: var(--ivory);
